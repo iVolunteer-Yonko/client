@@ -112,7 +112,7 @@ const OrgSignup = () => {
           <div className="mb-4">
             <label
               htmlFor="about"
-              className="block mb-1 text-sm font-medium text-gray-200"
+              className="block mb-1 text-sm font-medium text-black-200"
             >
               About
             </label>
