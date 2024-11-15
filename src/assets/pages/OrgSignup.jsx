@@ -100,7 +100,7 @@ const OrgSignup = () => {
               name="typeoforg"
               value={formData.typeoforg}
               onChange={handleChange}
-              className="w-full p-2 bg-gray-200 text-gray-700 rounded-md"
+              className="w-full p-2 bg-gray-200 text-black rounded-md"
               required
             >
               <option value="" disabled>
@@ -123,7 +123,7 @@ const OrgSignup = () => {
           <div className="mb-4">
             <label
               htmlFor="about"
-              className="block mb-1 text-sm font-medium text-gray-700"
+              className="block mb-1 text-sm font-medium text-black-200"
             >
               About
             </label>
@@ -134,7 +134,7 @@ const OrgSignup = () => {
               onChange={handleChange}
               placeholder="Tell us about your organization"
               rows="4"
-              className="w-full p-2 bg-gray-200 text-gray-700 rounded-md"
+              className="w-full p-2 bg-gray-200 text-black rounded-md"
               required
             ></textarea>
           </div>
@@ -147,19 +147,25 @@ const OrgSignup = () => {
         </Form>
         <p className="mt-4 text-center text-sm text-gray-600">
           Already have an account?{" "}
-          <a href="/organizer-login" className="text-indigo-600 hover:underline">
+          <a
+            href="/organizer-login"
+            className="text-indigo-600 hover:underline"
+          >
             Login
           </a>
         </p>
         <div className="mt-6 text-center">
-  <h3 className="text-lg font-semibold text-gray-800">For Volunteer</h3>
-  <p className="mt-2 text-sm text-gray-600">
-    Go Back!!{" "}
-    <a href="/volunteer-signup" className="text-indigo-600 hover:underline font-medium">
-      Login here
-    </a>
-  </p>
-</div>
+          <h3 className="text-lg font-semibold text-gray-800">For Volunteer</h3>
+          <p className="mt-2 text-sm text-gray-600">
+            Go Back!!{" "}
+            <a
+              href="/volunteer-signup"
+              className="text-indigo-600 hover:underline font-medium"
+            >
+              Login here
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   );
