@@ -85,15 +85,7 @@ const SubmitEvent = () => {
               value={formData.startDate}
               onChange={handleChange}
             />
-            <InputField
-              label="Event Start Time"
-              name="startTime"
-              type="time"
-              value={formData.startTime}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          
             <InputField
               label="Event End Date"
               name="endDate"
@@ -101,42 +93,8 @@ const SubmitEvent = () => {
               value={formData.endDate}
               onChange={handleChange}
             />
-            <InputField
-              label="Event End Time"
-              name="endTime"
-              type="time"
-              value={formData.endTime}
-              onChange={handleChange}
-            />
           </div>
-          <InputField
-            label="Timezone"
-            name="timezone"
-            type="text"
-            value={formData.timezone}
-            onChange={handleChange}
-          />
-          <div className="mt-4 flex items-center">
-            <input
-              type="checkbox"
-              name="allDay"
-              checked={formData.allDay}
-              onChange={handleChange}
-              className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
-            />
-            <label className="ml-2 text-sm text-gray-600">All Day Event</label>
-          </div>
-          <div className="mt-4 flex items-center">
-            <input
-              type="checkbox"
-              name="series"
-              checked={formData.series}
-              onChange={handleChange}
-              className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
-            />
-            <label className="ml-2 text-sm text-gray-600">Schedule Multiple Events</label>
-          </div>
-          <div className="mt-4">
+                  <div className="mt-4">
             <label className="block text-sm font-medium text-gray-700">
               Event Image
             </label>
