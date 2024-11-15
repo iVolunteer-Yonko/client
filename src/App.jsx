@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import {Layout, Home, About, Discover, Login, Signup, Error, Profile} from './assets/pages/index'
+import {Layout, Home, About, Discover, Login, Signup, Error, Profile,SubmitEvent} from './assets/pages/index'
 
 function App() {
   const router = createBrowserRouter([
@@ -33,6 +33,10 @@ function App() {
         {
           path : '/profile',
           element : <Profile />
+        },
+        {
+          path : '/event-submit',
+          element : <SubmitEvent />
         }
       ]
   }])
