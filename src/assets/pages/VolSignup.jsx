@@ -96,7 +96,7 @@ const VolSignup = () => {
   <p className="mt-2 text-sm text-gray-600">
     Are you Creating an organizer Profile?{" "}
     <a href="/organizer-signup" className="text-indigo-600 hover:underline font-medium">
-      Login here
+      SignUp here
     </a>
   </p>
 </div>

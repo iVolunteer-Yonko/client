@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <nav className="bg-gray-900 shadow-lg">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 ">
+    <nav className="sticky top-0 bg-gray-900 shadow-lg">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
         <div className="flex items-center justify-around h-16">
           {/* Left Section: Brand Logo */}
           <div className="flex items-center">
