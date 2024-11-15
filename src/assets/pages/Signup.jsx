@@ -1,6 +1,22 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import InputField from "../partials/InputField";
+import customFetch from '../../../../utils/customFetch';
+import { toast } from 'react-toastify';
+
+export const action = async ({request}) => {
+  const formData = await request.formData()
+  const data = Object.fromEntries(formData)
+
+  try{
+    await customFetch.post('/auth/signup', data)
+    toast.success('Registration Successful')
+    return redirect('/login')
+  }catch(error){
+    toast.error(error?.response?.data?.msg)
+    return error
+  }
+}
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -19,21 +35,6 @@ const Signup = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Example signup logic
-    if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
-
-    if (formData.username && formData.email && formData.password) {
-      console.log("Signup successful!");
-      navigate("/login"); // Redirect to login or desired route
-    } else {
-      alert("Please fill in all fields.");
-    }
-  };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -41,7 +42,7 @@ const Signup = () => {
         <h2 className="text-center text-2xl font-bold text-gray-800">
           Sign Up
         </h2>
-        <form onSubmit={handleSubmit} className="mt-4">
+        <Form method='post' className="mt-4">
           <InputField
             label="Username"
             name="username"
@@ -80,7 +81,7 @@ const Signup = () => {
           >
             Sign Up
           </button>
-        </form>
+        </Form>
         <p className="mt-4 text-center text-sm text-gray-600">
           Already have an account?{" "}
           <a href="/login" className="text-indigo-600 hover:underline">

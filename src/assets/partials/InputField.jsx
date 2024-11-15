@@ -10,7 +10,7 @@ const InputField = ({ label, name, value, onChange, placeholder, type = "text" }
       value={value}
       onChange={onChange}
       placeholder={placeholder}
-      className="w-full p-2 bg-gray-100 rounded text-white"
+      className="w-full p-2 bg-gray-100 rounded text-black"
       required
     />
   </div>
