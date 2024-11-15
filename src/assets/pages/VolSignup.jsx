@@ -1,26 +1,28 @@
 import React, { useState } from "react";
-import { Form, useNavigate } from "react-router-dom";
+import { Form,  useNavigation } from "react-router-dom";
 import InputField from "../partials/InputField";
-// import customFetch from "../../../../../utils/customFetch";
-// import { toast } from 'react-toastify';
+import customFetch from '../utils/customFetch'
+import { toast } from 'react-toastify';
 
-// export const action = async ({request}) => {
-//     const formData = await request.formData()
-//     const data = Object.fromEntries(formData)
+export const action = async ({request}) => {
+    const formData = await request.formData()
+    const data = Object.fromEntries(formData)
   
-//     try{
-//       await customFetch.post('/auth/signup', data)
-//       toast.success('Registration Successful')
-//       return redirect('/login')
-//     }catch(error){
-//       toast.error(error?.response?.data?.msg)
-//       return error
-//     }
-//   }
+    try{
+      await customFetch.post('/auth/volunteer-signup', data)
+      toast.success('Registration Successful')
+      return redirect('/login')
+    }catch(error){
+      toast.error(error?.response?.data?.msg)
+      return error
+    }
+}
 
 const VolSignup = () => {
   
-    const navigate = useNavigate();
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === 'submitting'
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -79,8 +81,8 @@ const VolSignup = () => {
           <button
             type="submit"
             className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md"
-          >
-            Sign Up
+            disabled={isSubmitting}> 
+            {isSubmitting ? 'Signing in' : 'Sign In'}
           </button>
         </Form>
         <p className="mt-4 text-center text-sm text-gray-600">

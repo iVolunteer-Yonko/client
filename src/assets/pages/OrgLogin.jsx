@@ -1,28 +1,42 @@
-import React, { useState } from "react";
-import { Form, useNavigate } from "react-router-dom";
+import React, { useState, useContext, useEffect } from "react";
+import { Form, useNavigation, useActionData } from "react-router-dom";
 import InputField from "../partials/InputField";
-// import customFetch from "../../../../../utils/customFetch";
-// import { toast } from 'react-toastify';
+import customFetch from '../utils/customFetch'
+import { toast } from 'react-toastify';
+import { LayoutContext } from './Layout';
 
-// Uncomment this section for integrating authentication with a backend
-// export const action = async ({request}) => {
-//     const formData = await request.formData()
-//     const data = Object.fromEntries(formData)
+
+export const action = async ({request}) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
   
-//     try{
-//       const response = await customFetch.post('/auth/login', data)
-//       toast.success('Login Successful')
-//       return redirect('/dashboard')
-//     }catch(error){
-//       toast.error(error?.response?.data?.msg)
-//       return error
-//     }
-//   }
+  try {
+    await customFetch.post('/auth/organizer-login', data);
+    toast.success('Logged In Successfully');
+    const { data: userData } = await customFetch.get('/user/organizer-current-user');
+    console.log(userData.user)
+    return userData.user;
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return redirect('/login');
+  }
+};
+
 
 const OrgLogin = () => {
-  const navigate = useNavigate();
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === 'submitting'
+  const userData = useActionData();
+  const { setCurrentUser } = useContext(LayoutContext);
+
+  useEffect(() => {
+    if (userData) {
+      setCurrentUser(userData);
+    }
+  }, [userData, setCurrentUser]);
+  
   const [formData, setFormData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -42,10 +56,10 @@ const OrgLogin = () => {
         </h2>
         <Form method="post" className="mt-4">
           <InputField
-            label="Username"
-            name="username"
-            type="text"
-            value={formData.username}
+            label="Email"
+            name="email"
+            type="email"
+            value={formData.email}
             onChange={handleChange}
             placeholder="Enter your username"
           />

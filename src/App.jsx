@@ -1,5 +1,10 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import {Layout, Home, About, Discover, Error, Profile,SubmitEvent, VolSignup , VolLogin,OrgLogin,OrgSignup} from './assets/pages/index'
+import {action as VolunteerSignupAction} from './assets/pages/VolSignup'
+import {action as VolunteerLoginAction} from './assets/pages/VolLogin'
+import {action as OrganizerSigninAction} from './assets/pages/OrgSignup'
+import {action as OrganizerLoginAction} from './assets/pages/OrgLogin'
+
 
 function App() {
   const router = createBrowserRouter([
@@ -23,22 +28,22 @@ function App() {
         {
           path : '/volunteer-signup',
           element : <VolSignup />,
-          // action: SignupAction
+          action: VolunteerSignupAction
         },
         {
           path : '/volunteer-login',
           element : <VolLogin />,
-          // action: LoginAction
+          action: VolunteerLoginAction
         },
         {
           path : '/organizer-signup',
           element : <OrgSignup />,
-          // action: SignupAction
+          action: OrganizerSigninAction
         },
         {
           path : '/organizer-login',
           element : <OrgLogin />,
-          // action: LoginAction
+          action: OrganizerLoginAction
         },
         
         {
