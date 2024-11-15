@@ -1,14 +1,11 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-<<<<<<< Updated upstream
 import {Layout, Home, About, Discover, Error, Profile,SubmitEvent, VolSignup , VolLogin,OrgLogin,OrgSignup} from './assets/pages/index'
 import {action as VolunteerSignupAction} from './assets/pages/VolSignup'
 import {action as VolunteerLoginAction} from './assets/pages/VolLogin'
 import {action as OrganizerSigninAction} from './assets/pages/OrgSignup'
 import {action as OrganizerLoginAction} from './assets/pages/OrgLogin'
 
-=======
 import {Layout, Home, About, Discover, Error, Profile,SubmitEvent, VolSignup , VolLogin,OrgLogin,OrgSignup,EventPage} from './assets/pages/index'
->>>>>>> Stashed changes
 
 function App() {
   const router = createBrowserRouter([
