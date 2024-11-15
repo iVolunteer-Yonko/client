@@ -47,13 +47,13 @@ const NavBar = () => {
           {/* Right Section: Signup and Login */}
           <div className="flex items-center space-x-6">
             <Link
-              to="/signup"
+              to="/volunteer-signup"
               className="bg-blue-600 hover:bg-blue-700 transition duration-300 text-white px-4 py-2 rounded-md text-sm font-medium"
             >
               Signup
             </Link>
             <Link
-              to="/login"
+              to="/volunteer-login"
               className="bg-gray-700 hover:bg-gray-800 transition duration-300 text-white px-4 py-2 rounded-md text-sm font-medium"
             >
               Login

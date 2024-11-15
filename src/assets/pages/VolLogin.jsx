@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, useNavigate } from "react-router-dom";
-import InputField from "../../partials/InputField";
+import InputField from "../partials/InputField";
 // import customFetch from "../../../../../utils/customFetch";
 // import { toast } from 'react-toastify';
 
@@ -19,7 +19,7 @@ import InputField from "../../partials/InputField";
 //     }
 //   }
 
-const OrgLogin = () => {
+const VolLogin = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
@@ -35,10 +35,10 @@ const OrgLogin = () => {
   };
 
   return (
-    <div className="flex  bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-6 rounded-md shadow-md w-full max-w-sm">
         <h2 className="text-center text-2xl font-bold text-gray-800">
-          Login
+          Volunteer Login
         </h2>
         <Form method="post" className="mt-4">
           <InputField
@@ -66,13 +66,23 @@ const OrgLogin = () => {
         </Form>
         <p className="mt-4 text-center text-sm text-gray-600">
           Don't have an account?{" "}
-          <a href="/signup" className="text-indigo-600 hover:underline">
+          <a href="/volunteer-signup" className="text-indigo-600 hover:underline">
             Register
           </a>
+          
         </p>
+        <div className="mt-6 text-center">
+  <h3 className="text-lg font-semibold text-gray-800">For Organizers</h3>
+  <p className="mt-2 text-sm text-gray-600">
+    Are you an organizer{" "}
+    <a href="/organizer-login" className="text-indigo-600 hover:underline font-medium">
+      Login here
+    </a>
+  </p>
+</div>
       </div>
     </div>
   );
 };
 
-export default OrgLogin;
+export default VolLogin;

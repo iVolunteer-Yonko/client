@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import {Layout, Home, About, Discover, Login, Signup, Error, Profile,SubmitEvent} from './assets/pages/index'
+import {Layout, Home, About, Discover, Error, Profile,SubmitEvent, VolSignup , VolLogin,OrgLogin,OrgSignup} from './assets/pages/index'
 
 function App() {
   const router = createBrowserRouter([
@@ -21,15 +21,26 @@ function App() {
           element: <About />
         },
         {
-          path : '/signup',
-          element : <Signup />,
+          path : '/volunteer-signup',
+          element : <VolSignup />,
           // action: SignupAction
         },
         {
-          path : '/login',
-          element : <Login />,
+          path : '/volunteer-login',
+          element : <VolLogin />,
           // action: LoginAction
         },
+        {
+          path : '/organizer-signup',
+          element : <OrgSignup />,
+          // action: SignupAction
+        },
+        {
+          path : '/organizer-login',
+          element : <OrgLogin />,
+          // action: LoginAction
+        },
+        
         {
           path : '/profile',
           element : <Profile />
