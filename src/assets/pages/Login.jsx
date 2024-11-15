@@ -1,72 +1,45 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import InputField from "../partials/InputField";
+import { VolLogin, OrgLogin } from "../components/authForms";
 
-const Login = () => {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Example authentication logic
-    if (formData.username && formData.password) {
-      console.log("Login successful!");
-      navigate("/dashboard"); // Redirect to dashboard or desired route
-    } else {
-      alert("Please fill in all fields.");
-    }
-  };
+const Signup = () => {
+  const [activeForm, setActiveForm] = useState("volunteer");
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-6 rounded-md shadow-md w-full max-w-sm">
-        <h2 className="text-center text-2xl font-bold text-gray-800">
-          Login
-        </h2>
-        <form onSubmit={handleSubmit} className="mt-4">
-          <InputField
-            label="Username"
-            name="username"
-            type="text"
-            value={formData.username}
-            onChange={handleChange}
-            placeholder="Enter your username"
-          />
-          <InputField
-            label="Password"
-            name="password"
-            type="password"
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="Enter your password"
-          />
-          <button
-            type="submit"
-            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md"
-          >
-            Login
-          </button>
-        </form>
-        <p className="mt-4 text-center text-sm text-gray-600">
-          Don't have an account?{" "}
-          <a href="/signup" className="text-indigo-600 hover:underline">
-            Register
-          </a>
-        </p>
+    <div className="flex flex-row  items-center justify-center  bg-gray-100 h-[100vh]">
+    <div className="flex flex-col items-center justify-center h-[100%] ">
+      {/* Buttons to toggle between forms */}
+      <div className="flex space-x-4">
+  <button
+    onClick={() => setActiveForm("volunteer")}
+    className={`px-4 py-2 rounded-md font-medium transition-all duration-300 ease-in-out ${
+      activeForm === "volunteer"
+        ? "bg-indigo-600 text-white"
+        : "bg-transparent border border-indigo-600 text-indigo-600 hover:bg-indigo-100"
+    }`}
+  >
+    Volunteer Signup
+  </button>
+  <button
+    onClick={() => setActiveForm("organization")}
+    className={`px-4 py-2 rounded-md font-medium transition-all duration-300 ease-in-out ${
+      activeForm === "organization"
+        ? "bg-indigo-600 text-white"
+        : "bg-transparent border border-indigo-600 text-indigo-600 hover:bg-indigo-100"
+    }`}
+  >
+    Organization Signup
+  </button>
+</div>
+
+
+      {/* Display the selected form */}
+      <div className="w-full max-w-md mt-4">
+        {activeForm === "volunteer" ? <VolLogin /> : <OrgLogin />}
       </div>
     </div>
+    </div>
   );
+  
 };
 
-export default Login;
+export default Signup;
