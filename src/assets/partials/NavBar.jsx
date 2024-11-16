@@ -1,10 +1,35 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import { LayoutContext } from "../pages/Layout"; // Assuming Layout provides the currentUser context
-
+import React, { useContext, useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { LayoutContext } from "../pages/Layout";
+import customFetch from "../utils/customFetch";
+import { toast } from 'react-toastify';
 
 const NavBar = () => {
-  const { currentUser } = useContext(LayoutContext); // Access the context
+  const { currentUser, setCurrentUser } = useContext(LayoutContext); 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      const apiEndpoint =
+        currentUser.role === "volunteer"
+          ? "/auth/volunteer-logout"
+          : "/auth/organizer-logout";
+
+      const afterLogout = 
+        currentUser.role === "volunteer"
+          ? "/volunteer-login"
+          : "/organizer-login";
+
+
+      await customFetch.get(apiEndpoint);
+      toast.success('Logged Out')
+      setCurrentUser(null);
+      navigate(afterLogout);
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  };
 
   return (
     <nav className="sticky top-0 bg-gray-900 shadow-lg">
@@ -66,30 +91,60 @@ const NavBar = () => {
                   Login
                 </Link>
               </>
-            ) : currentUser.role === "organizer" ? (
-              // When user is an organizer
-              <>
-                <Link
-                  to="/event-submit"
-                  className="bg-green-600 hover:bg-green-700 transition duration-300 text-white px-4 py-2 rounded-md text-sm font-medium"
-                >
-                  Host an Event
-                </Link>
-                <Link
-                  to="/profile"
-                  className="text-gray-300 hover:text-white transition duration-300 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  {currentUser.name}
-                </Link>
-              </>
             ) : (
-              // When user is a volunteer
-              <Link
-                to="/profile"
-                className="text-gray-300 hover:text-white transition duration-300 px-3 py-2 rounded-md text-sm font-medium"
-              >
-                {currentUser.username}
-              </Link>
+              // When user is logged in
+              <>
+                {currentUser.role === "organizer" && (
+                  <Link
+                    to="/event-submit"
+                    className="bg-green-600 hover:bg-green-700 transition duration-300 text-white px-4 py-2 rounded-md text-sm font-medium"
+                  >
+                    Host an Event
+                  </Link>
+                )}
+
+                {/* Dropdown Menu */}
+                <div className="relative">
+                  <button
+                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                    className="flex items-center text-gray-300 hover:text-white transition duration-300 px-3 py-2 rounded-md text-sm font-medium focus:outline-none"
+                  >
+                    {currentUser.name || currentUser.username}
+                    <svg
+                      className="ml-2 w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+
+                  {isDropdownOpen && (
+                    <div className="absolute right-0 mt-2 w-48 bg-gray-700 rounded-md shadow-lg py-1 z-99">
+                      <Link
+                        to="/profile"
+                        className="block w-full text-left px-4 py-2 text-sm text-gray-50 bg-gray-700 hover:text-blue"
+                        onClick={() => setIsDropdownOpen(false)}
+                      >
+                        Profile
+                      </Link>
+                      <button
+                        onClick={handleLogout}
+                        className="block w-full text-left px-4 py-2 text-sm text-gray-50 bg-gray-700 hover:text-blue"
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </>
             )}
           </div>
         </div>
@@ -99,3 +154,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+

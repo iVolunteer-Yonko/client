@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form,  useNavigation } from "react-router-dom";
+import { Form,  useNavigation, redirect } from "react-router-dom";
 import InputField from "../partials/InputField";
 import customFetch from '../utils/customFetch'
 import { toast } from 'react-toastify';
@@ -11,7 +11,7 @@ export const action = async ({request}) => {
     try{
       await customFetch.post('/auth/organizer-signup', data)
       toast.success('Registration Successful')
-      return redirect('/login')
+      return redirect('/organizer-login')
     }catch(error){
       toast.error(error?.response?.data?.msg)
       return error

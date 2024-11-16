@@ -14,7 +14,6 @@ export const action = async ({request}) => {
     await customFetch.post('/auth/organizer-login', data);
     toast.success('Logged In Successfully');
     const { data: userData } = await customFetch.get('/user/organizer-current-user');
-    console.log(userData.user)
     return userData.user;
   } catch (error) {
     toast.error(error?.response?.data?.msg);
