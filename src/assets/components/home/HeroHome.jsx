@@ -18,21 +18,23 @@ const HeroHome = () => {
             <span className="text-indigo-500">Volunteer</span> Today
           </h1>
           <p className="text-lg text-gray-600 mb-8">
-            Join thousands of volunteers who are making an impact in their communities. Whether you want to
-            lend a hand or manage events, we make it easy for you to connect and contribute.
+            Join thousands of volunteers who are making an impact in their
+            communities. Whether you want to lend a hand or manage events, we
+            make it easy for you to connect and contribute.
           </p>
 
           {/* Call to Action Buttons */}
           <div className="space-y-4 sm:space-y-0 sm:space-x-6 flex flex-col sm:flex-row">
             <a
               href="/volunteer-login"
-              className="bg-indigo-500 hover:bg-indigo-600 text-white font-medium py-3 px-8 rounded-lg shadow-md transform transition-transform hover:scale-105"
+              className="bg-indigo-500 hover:bg-indigo-600 text-white hover:text-white font-medium py-3 px-8 rounded-lg shadow-md transform transition-transform hover:scale-105"
             >
               Volunteer Login
             </a>
+
             <a
               href="/volunteer-signup"
-              className="bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-8 rounded-lg shadow-md transform transition-transform hover:scale-105"
+              className="bg-green-500 hover:bg-green-600 text-white hover:text-white font-medium py-3 px-8 rounded-lg shadow-md transform transition-transform hover:scale-105"
             >
               Volunteer Sign Up
             </a>
@@ -58,18 +60,21 @@ const HeroHome = () => {
             Organize Impactful Events
           </h2>
           <p className="text-lg text-gray-600 mb-8">
-            Are you an organizer? Manage your events with ease and collaborate with volunteers to bring
-            meaningful projects to life.
+            Are you an organizer? Manage your events with ease and collaborate
+            with volunteers to bring meaningful projects to life.
           </p>
           <a
             href="/organizer-login"
-            className="bg-red-500 hover:bg-red-600 text-white font-medium py-3 px-8 rounded-lg shadow-md transform transition-transform hover:scale-105"
+            className="bg-red-500 hover:bg-red-600 text-white hover:text-white font-medium py-3 px-8 rounded-lg shadow-md transform transition-transform hover:scale-105"
           >
             Organizer Login
           </a>
           <p className="mt-4 text-sm text-gray-600">
             New to organizing?{" "}
-            <a href="/organizer-signup" className="text-indigo-500 hover:underline font-medium">
+            <a
+              href="/organizer-signup"
+              className="text-indigo-500 hover:underline font-medium"
+            >
               Sign up here
             </a>
           </p>

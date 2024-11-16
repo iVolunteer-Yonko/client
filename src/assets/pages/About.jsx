@@ -9,7 +9,8 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-6 py-16 text-center">
           <h1 className="text-4xl font-bold mb-4">About Us</h1>
           <p className="text-lg font-medium">
-            Empowering communities through volunteerism, innovation, and collaboration.
+            Empowering communities through volunteerism, innovation, and
+            collaboration.
           </p>
         </div>
       </div>
@@ -18,32 +19,39 @@ const About = () => {
       <section className="max-w-7xl mx-auto px-6 py-12">
         <h2 className="text-3xl font-bold text-center mb-6">Our Mission</h2>
         <p className="text-center text-lg leading-relaxed max-w-3xl mx-auto">
-          We aim to bridge the gap between organizations and passionate individuals eager to create positive change. 
-          Our platform connects volunteers and organizations to foster impactful collaborations and meaningful contributions.
+          We aim to bridge the gap between organizations and passionate
+          individuals eager to create positive change. Our platform connects
+          volunteers and organizations to foster impactful collaborations and
+          meaningful contributions.
         </p>
       </section>
 
       {/* Core Values */}
       <section className="bg-gray-100 py-12">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-10">Our Core Values</h2>
+          <h2 className="text-3xl font-bold text-center mb-10">
+            Our Core Values
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="p-6 bg-white shadow-md rounded-lg text-center">
               <h3 className="text-xl font-semibold mb-2">Integrity</h3>
               <p className="text-sm">
-                We uphold honesty and transparency in every interaction and decision we make.
+                We uphold honesty and transparency in every interaction and
+                decision we make.
               </p>
             </div>
             <div className="p-6 bg-white shadow-md rounded-lg text-center">
               <h3 className="text-xl font-semibold mb-2">Collaboration</h3>
               <p className="text-sm">
-                We believe in the power of teamwork to achieve extraordinary results.
+                We believe in the power of teamwork to achieve extraordinary
+                results.
               </p>
             </div>
             <div className="p-6 bg-white shadow-md rounded-lg text-center">
               <h3 className="text-xl font-semibold mb-2">Innovation</h3>
               <p className="text-sm">
-                We encourage creativity and embrace new ideas to drive meaningful impact.
+                We encourage creativity and embrace new ideas to drive
+                meaningful impact.
               </p>
             </div>
           </div>
@@ -57,7 +65,7 @@ const About = () => {
           {/* Team Member */}
           <div className="text-center">
             <img
-              src="/images/iVolunteer.jpg"
+              src="/images/roshan-profile.jpeg"
               alt="Roshan Pandey"
               className="w-36 h-36 rounded-full mx-auto mb-4"
             />
@@ -67,7 +75,7 @@ const About = () => {
           {/* Repeat for other members */}
           <div className="text-center">
             <img
-              src="/images/iVolunteer.jpg"
+              src="/images/ranish-profile.jpeg"
               alt="Ranish Ghimire"
               className="w-36 h-36 rounded-full mx-auto mb-4"
             />
@@ -76,7 +84,7 @@ const About = () => {
           </div>
           <div className="text-center">
             <img
-              src="/images/iVolunteer.jpg"
+              src="/images/rujan-profile.jpeg"
               alt="Rujan Bastola"
               className="w-36 h-36 rounded-full mx-auto mb-4"
             />
@@ -85,7 +93,7 @@ const About = () => {
           </div>
           <div className="text-center">
             <img
-              src="/images/iVolunteer.jpg"
+              src="/images/sujal-profile.jpeg"
               alt="Sujal Sangraula"
               className="w-36 h-36 rounded-full mx-auto mb-4"
             />
@@ -100,7 +108,8 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold mb-4">Join Us on Our Journey</h2>
           <p className="text-lg mb-6">
-            Together, we can create a brighter future for communities everywhere.
+            Together, we can create a brighter future for communities
+            everywhere.
           </p>
           <Link
             to="/volunteer-signup"
