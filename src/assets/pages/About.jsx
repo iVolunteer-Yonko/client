@@ -65,7 +65,7 @@ const About = () => {
           {/* Team Member */}
           <div className="text-center">
             <img
-              src="../../../public/images/roshan-profile.jpeg"
+              src="/images/roshan-profile.jpeg"
               alt="Roshan Pandey"
               className="w-36 h-36 rounded-full mx-auto mb-4"
             />
@@ -75,7 +75,7 @@ const About = () => {
           {/* Repeat for other members */}
           <div className="text-center">
             <img
-              src="../../../public/images/ranish-profile.jpeg"
+              src="/images/ranish-profile.jpeg"
               alt="Ranish Ghimire"
               className="w-36 h-36 rounded-full mx-auto mb-4"
             />
@@ -84,7 +84,7 @@ const About = () => {
           </div>
           <div className="text-center">
             <img
-              src="../../../public/images/rujan-profile.jpeg"
+              src="/images/rujan-profile.jpeg"
               alt="Rujan Bastola"
               className="w-36 h-36 rounded-full mx-auto mb-4"
             />
@@ -93,7 +93,7 @@ const About = () => {
           </div>
           <div className="text-center">
             <img
-              src="../../../public/images/sujal-profile.jpeg"
+              src="/images/sujal-profile.jpeg"
               alt="Sujal Sangraula"
               className="w-36 h-36 rounded-full mx-auto mb-4"
             />
