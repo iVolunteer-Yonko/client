@@ -34,38 +34,33 @@ const PaymentOptions = () => {
         </h1>
 
         {/* Duration Toggle */}
-        <div className="flex justify-center mb-6">
-          <button
-            className={`px-4 py-2 rounded-l-lg ${
-              duration === "monthly"
-                ? "bg-blue-600 text-white"
-                : "bg-gray-200 text-gray-800"
-            }`}
-            onClick={() => setDuration("monthly")}
-          >
-            Monthly
-          </button>
-          <button
-            className={`px-4 py-2 ${
-              duration === "sixMonths"
-                ? "bg-blue-600 text-white"
-                : "bg-gray-200 text-gray-800"
-            }`}
-            onClick={() => setDuration("sixMonths")}
-          >
-            6 Months
-          </button>
-          <button
-            className={`px-4 py-2 rounded-r-lg ${
-              duration === "yearly"
-                ? "bg-blue-600 text-white"
-                : "bg-gray-200 text-gray-800"
-            }`}
-            onClick={() => setDuration("yearly")}
-          >
-            Yearly
-          </button>
-        </div>
+        <div className="flex justify-center mb-6 space-x-4">
+  <button
+    className={`px-4 py-2 rounded-l-lg ${
+      duration === "monthly" ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-800"
+    }`}
+    onClick={() => setDuration("monthly")}
+  >
+    Monthly
+  </button>
+  <button
+    className={`px-4 py-2 ${
+      duration === "sixMonths" ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-800"
+    }`}
+    onClick={() => setDuration("sixMonths")}
+  >
+    6 Months
+  </button>
+  <button
+    className={`px-4 py-2 rounded-r-lg ${
+      duration === "yearly" ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-800"
+    }`}
+    onClick={() => setDuration("yearly")}
+  >
+    Yearly
+  </button>
+</div>
+
 
         {/* Plan Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
