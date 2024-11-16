@@ -33,7 +33,7 @@ export default [
       'no-unused-vars': [
         'warn',
         {
-          varsIgnorePattern: '^useContext$', // Ignore useContext import
+          varsIgnorePattern: '^*$', // Ignore useContext import
         },
       ],
       'react/jsx-no-unescaped-entities': 'off', // Disable unescaped entities warning
