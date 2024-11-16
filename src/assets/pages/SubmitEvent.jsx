@@ -1,40 +1,34 @@
 import React, { useState } from "react";
-import { Form } from "react-router-dom";
+import { Form, redirect } from "react-router-dom";
 import InputField from "../partials/InputField";
-// import customFetch from "../../../../../utils/customFetch";
-// import { toast } from 'react-toastify';
+import customFetch from "../utils/customFetch";
+import { toast } from 'react-toastify';
 
-// Uncomment this section for backend integration
-// export const action = async ({ request }) => {
-//   const formData = await request.formData();
-//   const data = Object.fromEntries(formData);
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
   
-//   try {
-//     const response = await customFetch.post('/events', data);
-//     toast.success('Event Submitted Successfully');
-//     return redirect('/events');
-//   } catch (error) {
-//     toast.error(error?.response?.data?.msg);
-//     return error;
-//   }
-// };
+  try {
+    await customFetch.post('/host-a-event', data);
+    toast.success('Event Submitted Successfully');
+    return null;
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return error;
+  }
+};
 
 const SubmitEvent = () => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-    startDate: "",
-    startTime: "",
-    endDate: "",
-    endTime: "",
-    timezone: "America/Toronto",
-    allDay: false,
-    series: false,
-    image: null,
+    startDateTime: "",
+    endDateTime: "",
+    eventimage: null,
     categories: "",
     tags: "",
     venue: "",
-    organizer: "",
+    organizerdetails: "",
     website: "",
     cost: "",
     badges: [], // New field for badges
@@ -111,16 +105,16 @@ const SubmitEvent = () => {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <InputField
               label="Event Start Date"
-              name="startDate"
+              name="startDateTime"
               type="date"
-              value={formData.startDate}
+              value={formData.startDateTime}
               onChange={handleChange}
             />
             <InputField
               label="Event End Date"
-              name="endDate"
+              name="endDateTime"
               type="date"
-              value={formData.endDate}
+              value={formData.endDateTime}
               onChange={handleChange}
             />
           </div>
@@ -130,7 +124,7 @@ const SubmitEvent = () => {
             </label>
             <input
               type="file"
-              name="image"
+              name="eventimage"
               accept=".jpg,.png,.gif"
               onChange={handleFileChange}
               className="mt-2 block w-full text-sm text-gray-500 border-gray-300 rounded-md"
@@ -162,9 +156,9 @@ const SubmitEvent = () => {
           />
           <InputField
             label="Organizer Details"
-            name="organizer"
+            name="organizerdetails"
             type="text"
-            value={formData.organizer}
+            value={formData.organizerdetails}
             onChange={handleChange}
             placeholder="Enter organizer details"
           />
@@ -212,7 +206,7 @@ const SubmitEvent = () => {
                   </label>
                   <input
                     type="file"
-                    name="badgeImage"
+                    name="badgeimage"
                     accept=".jpg,.png,.gif"
                     onChange={(e) => handleBadgeChange(e, index)}
                     className="mt-2 block w-full text-sm text-gray-500 border-gray-300 rounded-md"

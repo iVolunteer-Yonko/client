@@ -1,9 +1,10 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
 import {action as VolunteerSignupAction} from './assets/pages/VolSignup'
 import {action as VolunteerLoginAction} from './assets/pages/VolLogin'
 import {action as OrganizerSigninAction} from './assets/pages/OrgSignup'
 import {action as OrganizerLoginAction} from './assets/pages/OrgLogin'
+import {action as EventSubmitAction} from './assets/pages/SubmitEvent'
+
 
 import {Layout, Home, About, Discover, Error, Profile,SubmitEvent, VolSignup , VolLogin,OrgLogin,OrgSignup,EventPage, VolunteerProfile, OrganizationProfile, VolunteerReview} from './assets/pages/index'
 import TestPage from './assets/pages/TestPage';
@@ -54,7 +55,8 @@ function App() {
         },
         {
           path : '/event-submit',
-          element : <SubmitEvent />
+          element : <SubmitEvent />,
+          action: EventSubmitAction
         },
         {
           path : '/event',
