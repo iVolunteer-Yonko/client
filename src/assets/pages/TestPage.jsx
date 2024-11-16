@@ -16,6 +16,7 @@ const TestPage = () => {
     { path: "/profile-volunteer", label: "Volunteer Profile" },
     { path: "/profile-organization", label: "Organization Profile" },
     { path: "/review-volunteer", label: "Review Volunteer" },
+    { path: "/chat", label: "Chatw" },
   ];
 
   return (

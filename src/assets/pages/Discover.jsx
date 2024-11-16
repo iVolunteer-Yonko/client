@@ -1,31 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useEventContext } from "../../contexts/EventContext";
 
 const Discover = () => {
-  // Dummy Event Data (replace with API fetch later)
-  const [events, setEvents] = useState([
-    {
-      id: 1,
-      name: "Community Clean-Up",
-      date: "02/03/2024",
-      location: "Kantipur Engineering College, Dhapakhel",
-      bannerImage: "/images/iVolunteer.jpg",
-    },
-    {
-      id: 2,
-      name: "Tree Plantation Drive",
-      date: "15/03/2024",
-      location: "Patan Durbar Square, Lalitpur",
-      bannerImage: "/images/iVolunteer.jpg",
-    },
-    {
-      id: 3,
-      name: "Tech Meetup 2024",
-      date: "25/03/2024",
-      location: "Kathmandu University, Dhulikhel",
-      bannerImage: "/images/iVolunteer.jpg",
-    },
-  ]);
+  const { eventsList } = useEventContext();
+  const [events, setEvents] = useState(eventsList);
 
   // Sort events by most recently added (optional if fetched in order)
   useEffect(() => {
@@ -45,7 +24,7 @@ const Discover = () => {
               {/* Event Image */}
               <div className="aspect-[16/9] overflow-hidden">
                 <img
-                  src={event.bannerImage}
+                  src={event.eventimage}
                   alt={`${event.name} Banner`}
                   className="w-full h-full object-cover"
                 />
@@ -54,13 +33,13 @@ const Discover = () => {
               <div className="p-4">
                 <h2 className="text-lg font-semibold mb-2">{event.name}</h2>
                 <p className="text-sm text-gray-600">
-                  <span className="font-semibold">Date:</span> {event.date}
+                  <span className="font-semibold">Date:</span> {event.startdate}
                 </p>
                 <p className="text-sm text-gray-600 mb-4">
                   <span className="font-semibold">Location:</span> {event.location}
                 </p>
                 <Link
-                  to={`/event/${event.id}`}
+                  to={`/event/${event.id}`} // Passing event ID in the URL
                   className="text-blue-600 hover:underline text-sm font-medium"
                 >
                   View Details →

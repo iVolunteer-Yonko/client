@@ -1,21 +1,27 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { useEventContext } from '../../contexts/EventContext';
 
 const EventPage = () => {
-  // Dummy Event Data
-  const event = {
-    name: "Community Clean-Up",
-    host: "Green Nepal",
-    date: "02/03/2024 - 02/03/2024",
-    time: "09:00 AM - 03:00 PM",
-    description:
-      "Join us for a day of community service and help make a difference. Together, we can create a cleaner and greener environment.",
-    location: "Kantipur Engineering College, Dhapakhel",
-    googleMapsLink: "https://goo.gl/maps/xyz123", // Replace with actual map link
-    type: "Unpaid",
-    facilities: { merch: "Yes", food: "No", paid: "No" },
-    bannerImage: "/images/iVolunteer.jpg", // Replace with your banner image path
-  };
+  const { eventId } = useParams(); // Get event ID from URL
+  const { eventsList } = useEventContext(); // Assuming eventsList comes from context
+  const [event, setEvent] = useState(null);
+
+  // Find the event based on the event ID
+  useEffect(() => {
+    if (eventsList && eventId) {
+      const foundEvent = eventsList.find(event => event.id === parseInt(eventId));
+      setEvent(foundEvent);
+    }
+  }, [eventId, eventsList]);
+
+  if (!eventsList || eventsList.length === 0) {
+    return <p>Loading events...</p>;
+  }
+
+  if (!event) {
+    return <p>Event not found. Please check the event ID or try again later.</p>;
+  }
 
   return (
     <div className="min-h-screen text-gray-800">
@@ -27,7 +33,7 @@ const EventPage = () => {
       {/* Banner Section */}
       <section className="w-full max-w-3xl mx-auto aspect-[16/9] rounded-xl overflow-hidden">
         <img
-          src={event.bannerImage}
+          src={event.eventimage}
           alt={`${event.name} Banner`}
           className="w-full h-full object-cover"
         />
@@ -41,10 +47,7 @@ const EventPage = () => {
           </div>
           <div>
             <p>
-              <span className="font-semibold">Date:</span> {event.date}
-            </p>
-            <p>
-              <span className="font-semibold">Time:</span> {event.time}
+              <span className="font-semibold">Date:</span> {event.startdate}
             </p>
           </div>
           <div>
@@ -52,9 +55,9 @@ const EventPage = () => {
           </div>
           <div>
             <p>
-              <span className="font-semibold">Location:</span>{" "}
+              <span className="font-semibold">Location:</span>{' '}
               <a
-                href={event.googleMapsLink}
+                href={event.website}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 underline"
@@ -65,26 +68,28 @@ const EventPage = () => {
           </div>
           <div>
             <p>
-              <span className="font-semibold">Type:</span> {event.type}
+              <span className="font-semibold">Type:</span> {event.categories}
             </p>
-          </div>
-          <div>
-            <p className="font-semibold">Facilities:</p>
-            <ul className="list-disc list-inside text-gray-600 space-y-1">
-              <li>Merch: {event.facilities.merch}</li>
-              <li>Food: {event.facilities.food}</li>
-              <li>Paid: {event.facilities.paid}</li>
-            </ul>
           </div>
         </div>
 
         {/* Join Now Button */}
         <div className="text-center mt-8">
-          <Link
-            to="/join-event"
+          <a
+            href="/join-event"
             className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg text-sm sm:text-base transition-transform transform hover:scale-105 shadow-md"
           >
             Join Now
+          </a>
+        </div>
+
+        {/* Discussion Button */}
+        <div className="text-center mt-4">
+          <Link
+            to={`/discussion/${event.id}`}
+            className="inline-block bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg text-sm sm:text-base transition-transform transform hover:scale-105 shadow-md"
+          >
+            View Discussions
           </Link>
         </div>
       </div>

@@ -3,10 +3,9 @@ import {action as VolunteerSignupAction} from './assets/pages/VolSignup'
 import {action as VolunteerLoginAction} from './assets/pages/VolLogin'
 import {action as OrganizerSigninAction} from './assets/pages/OrgSignup'
 import {action as OrganizerLoginAction} from './assets/pages/OrgLogin'
-import {action as EventSubmitAction} from './assets/pages/SubmitEvent'
 
 
-import {Layout, Home, About, Discover, Error, Profile,SubmitEvent, VolSignup , VolLogin,OrgLogin,OrgSignup,EventPage, VolunteerProfile, OrganizationProfile, VolunteerReview} from './assets/pages/index'
+import {Layout, Home, About, Discover, Error, Profile,SubmitEvent, VolSignup , VolLogin,OrgLogin,OrgSignup,EventPage, VolunteerProfile, OrganizationProfile, VolunteerReview, DiscussionPage} from './assets/pages/index'
 import TestPage from './assets/pages/TestPage';
 
 function App() {
@@ -55,11 +54,10 @@ function App() {
         },
         {
           path : '/event-submit',
-          element : <SubmitEvent />,
-          action: EventSubmitAction
+          element : <SubmitEvent />
         },
         {
-          path : '/event',
+          path : '/event/:eventId',
           element : <EventPage />
         },
         {
@@ -77,6 +75,10 @@ function App() {
         {
           path : '/t',
           element : <TestPage/>
+        },
+        {
+          path : '/discussion/:eventId',
+          element : <DiscussionPage/>
         },
       ]
   }])
