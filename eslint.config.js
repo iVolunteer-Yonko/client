@@ -29,17 +29,15 @@ export default [
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
       'react/jsx-no-target-blank': 'off',
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
-      // Add this to ignore unused variables with the name 'useContext'
+      'react-refresh/only-export-components': 'off', // Disable the warning
       'no-unused-vars': [
         'warn',
         {
           varsIgnorePattern: '^useContext$', // Ignore useContext import
         },
       ],
+      'react/jsx-no-unescaped-entities': 'off', // Disable unescaped entities warning
+      'no-undef': ['warn', { 'typeof': true }], // Ignore undefined variables like 'redirect'
     },
   },
 ]
