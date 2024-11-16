@@ -9,7 +9,7 @@ const Footer = () => {
           {/* Left Section: Brand Logo */}
           <div className="flex items-center mb-4 sm:mb-0">
             <Link to="/" className="text-2xl font-bold text-white">
-              BrandLogo
+              iVolunteer
             </Link>
           </div>
 
@@ -37,16 +37,28 @@ const Footer = () => {
 
           {/* Right Section: Social Media Icons */}
           <div className="flex space-x-6">
-            <a href="#" className="text-gray-300 hover:text-white transition duration-300 text-lg">
+            <a
+              href="#"
+              className="text-gray-300 hover:text-white transition duration-300 text-lg"
+            >
               <i className="fab fa-facebook-f"></i>
             </a>
-            <a href="#" className="text-gray-300 hover:text-white transition duration-300 text-lg">
+            <a
+              href="#"
+              className="text-gray-300 hover:text-white transition duration-300 text-lg"
+            >
               <i className="fab fa-twitter"></i>
             </a>
-            <a href="#" className="text-gray-300 hover:text-white transition duration-300 text-lg">
+            <a
+              href="#"
+              className="text-gray-300 hover:text-white transition duration-300 text-lg"
+            >
               <i className="fab fa-linkedin-in"></i>
             </a>
-            <a href="#" className="text-gray-300 hover:text-white transition duration-300 text-lg">
+            <a
+              href="#"
+              className="text-gray-300 hover:text-white transition duration-300 text-lg"
+            >
               <i className="fab fa-instagram"></i>
             </a>
           </div>
@@ -54,7 +66,10 @@ const Footer = () => {
 
         {/* Bottom Section: Copyright */}
         <div className="mt-8 text-center text-sm text-gray-400">
-          <p>&copy; {new Date().getFullYear()} Volunteer Connect. All rights reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()} Volunteer Connect. All rights
+            reserved.
+          </p>
         </div>
       </div>
     </footer>

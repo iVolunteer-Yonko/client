@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { LayoutContext } from "../pages/Layout"; // Assuming Layout provides the currentUser context
 
-
 const NavBar = () => {
   const { currentUser } = useContext(LayoutContext); // Access the context
 
@@ -13,7 +12,7 @@ const NavBar = () => {
           {/* Left Section: Brand Logo */}
           <div className="flex items-center">
             <Link to="/" className="text-white text-2xl font-bold">
-              BrandLogo
+              iVolunteer
             </Link>
             <div className="hidden md:flex ml-12 space-x-8">
               <Link
