@@ -33,6 +33,13 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      // Add this to ignore unused variables with the name 'useContext'
+      'no-unused-vars': [
+        'warn',
+        {
+          varsIgnorePattern: '^useContext$', // Ignore useContext import
+        },
+      ],
     },
   },
 ]
