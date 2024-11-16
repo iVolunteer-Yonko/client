@@ -37,6 +37,7 @@ const SubmitEvent = () => {
     organizer: "",
     website: "",
     cost: "",
+    badges: [], // New field for badges
   });
 
   const handleChange = (e) => {
@@ -48,10 +49,40 @@ const SubmitEvent = () => {
   };
 
   const handleFileChange = (e) => {
+    const { name, files } = e.target;
     setFormData((prevState) => ({
       ...prevState,
-      image: e.target.files[0],
+      [name]: files[0],
     }));
+  };
+
+  const handleBadgeChange = (e, index) => {
+    const { name, value, files } = e.target;
+    setFormData((prevState) => {
+      const updatedBadges = [...prevState.badges];
+      updatedBadges[index] = {
+        ...updatedBadges[index],
+        [name]: name === "badgeImage" ? files[0] : value,
+      };
+      return { ...prevState, badges: updatedBadges };
+    });
+  };
+
+  const addBadge = () => {
+    setFormData((prevState) => ({
+      ...prevState,
+      badges: [
+        ...prevState.badges,
+        { badgeTitle: "", badgeDescription: "", badgeImage: null },
+      ],
+    }));
+  };
+
+  const removeBadge = (index) => {
+    setFormData((prevState) => {
+      const updatedBadges = prevState.badges.filter((_, i) => i !== index);
+      return { ...prevState, badges: updatedBadges };
+    });
   };
 
   return (
@@ -85,7 +116,6 @@ const SubmitEvent = () => {
               value={formData.startDate}
               onChange={handleChange}
             />
-          
             <InputField
               label="Event End Date"
               name="endDate"
@@ -94,7 +124,7 @@ const SubmitEvent = () => {
               onChange={handleChange}
             />
           </div>
-                  <div className="mt-4">
+          <div className="mt-4">
             <label className="block text-sm font-medium text-gray-700">
               Event Image
             </label>
@@ -154,6 +184,58 @@ const SubmitEvent = () => {
             onChange={handleChange}
             placeholder="Enter cost (leave blank for free events)"
           />
+          
+          {/* Badge Section */}
+          <div className="mt-6">
+            <h3 className="text-lg font-medium text-gray-800">Add Badges</h3>
+            {formData.badges.map((badge, index) => (
+              <div key={index} className="mt-4 border p-4 rounded-md">
+                <InputField
+                  label="Badge Title"
+                  name="badgeTitle"
+                  type="text"
+                  value={badge.badgeTitle}
+                  onChange={(e) => handleBadgeChange(e, index)}
+                  placeholder="Enter badge title"
+                />
+                <InputField
+                  label="Badge Description"
+                  name="badgeDescription"
+                  type="text"
+                  value={badge.badgeDescription}
+                  onChange={(e) => handleBadgeChange(e, index)}
+                  placeholder="Enter badge description"
+                />
+                <div className="mt-4">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Badge Image
+                  </label>
+                  <input
+                    type="file"
+                    name="badgeImage"
+                    accept=".jpg,.png,.gif"
+                    onChange={(e) => handleBadgeChange(e, index)}
+                    className="mt-2 block w-full text-sm text-gray-500 border-gray-300 rounded-md"
+                  />
+                </div>
+                <button
+                  type="button"
+                  onClick={() => removeBadge(index)}
+                  className="mt-4 text-red-500 hover:text-red-700 text-sm"
+                >
+                  Remove Badge
+                </button>
+              </div>
+            ))}
+            <button
+              type="button"
+              onClick={addBadge}
+              className="mt-4 w-full bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-md"
+            >
+              Add Badge
+            </button>
+          </div>
+
           <button
             type="submit"
             className="mt-6 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md"
